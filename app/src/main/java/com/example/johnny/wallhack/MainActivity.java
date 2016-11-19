@@ -11,7 +11,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private static final int NUM_ROWS = 3;
-    private static final int COL_ROWS = 3;
+    private static final int NUM_COLS = 3;
+
+    Button buttons[][] = new Button [NUM_ROWS][NUM_COLS];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             ));
             table.addView(tableRow);
 
-            for (int col=0; col< COL_ROWS;col++){
+            for (int col=0; col< NUM_COLS;col++){
                 final int FINAL_COL = col;
                 final int FINAL_ROW = row;
                 Button button = new Button(this);
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                         TableRow.LayoutParams.MATCH_PARENT,
                         1.0f
                 ));
-                button.setText(""+row+","+col);
+                button.setText(""+col+","+row);
                 //make Text not clip on small buttons
                 button.setPadding(0,0,0,0);
 
@@ -51,12 +53,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 tableRow.addView(button);
+                buttons[row][col] = button;
             }
         }
     }
 
-    private void gridButtonClicked(int x, int y) {
-        Toast.makeText(this, "Button clicked", Toast.LENGTH_SHORT).show();
+    private void gridButtonClicked(int col, int row) {
+        Toast.makeText(this, "Button clicked" +col+ "," +row, Toast.LENGTH_SHORT).show();
+        Button button = buttons[row][col];
+        button.setBackgroundResource(R.mipmap.raven_head);
     }
 
 
