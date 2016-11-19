@@ -1,5 +1,9 @@
 package com.example.johnny.wallhack;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -61,7 +65,17 @@ public class MainActivity extends AppCompatActivity {
     private void gridButtonClicked(int col, int row) {
         Toast.makeText(this, "Button clicked" +col+ "," +row, Toast.LENGTH_SHORT).show();
         Button button = buttons[row][col];
-        button.setBackgroundResource(R.mipmap.raven_head);
+        //Lock Button Sizes
+
+
+        //doesn't scale image
+        //button.setBackgroundResource(R.mipmap.raven_head);
+        int newWidth = button.getWidth();
+        int newHeight = button.getHeight();
+        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.raven_head);
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth,newHeight,true);
+        Resources resource = getResources();
+        button.setBackground(new BitmapDrawable(resource, scaledBitmap));
     }
 
 
