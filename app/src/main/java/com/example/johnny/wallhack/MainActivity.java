@@ -66,16 +66,39 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Button clicked" +col+ "," +row, Toast.LENGTH_SHORT).show();
         Button button = buttons[row][col];
         //Lock Button Sizes
+        LockButtonSizes();
 
 
         //doesn't scale image
         //button.setBackgroundResource(R.mipmap.raven_head);
+
+        //scale Image
         int newWidth = button.getWidth();
         int newHeight = button.getHeight();
         Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.raven_head);
         Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth,newHeight,true);
         Resources resource = getResources();
         button.setBackground(new BitmapDrawable(resource, scaledBitmap));
+
+        //change text
+        button.setText("clicked");
+    }
+
+    private void LockButtonSizes() {
+        for(int r = 0; r<NUM_ROWS;r++){
+            for(int c = 0; c<NUM_COLS;c++){
+                Button button = buttons[c][r];
+
+                int width = button.getWidth();
+                button.setMinWidth(width);
+                button.setMaxWidth(width);
+
+                int height = button.getHeight();
+                button.setMinHeight(height);
+                button.setMaxHeight(height);
+
+            }
+        }
     }
 
 
