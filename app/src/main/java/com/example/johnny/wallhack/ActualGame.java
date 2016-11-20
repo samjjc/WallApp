@@ -19,6 +19,7 @@ public class ActualGame extends AppCompatActivity {
 
     private static final int NUM_ROWS = 3;
     private static final int NUM_COLS = 3;
+    private boolean finished = false;
 
     Button buttons[][] = new Button [NUM_ROWS][NUM_COLS];
 
@@ -31,13 +32,14 @@ public class ActualGame extends AppCompatActivity {
         final Handler HANDLE =h;
         int delay = 1000; //milliseconds
         final int F_DELAY= delay;
-
-        h.postDelayed(new Runnable(){
-            public void run(){
-                ravensAppear();
-                HANDLE.postDelayed(this, F_DELAY);
-            }
-        }, delay);
+        while(!finished) {
+            h.postDelayed(new Runnable() {
+                public void run() {
+                    ravensAppear();
+                    HANDLE.postDelayed(this, F_DELAY);
+                }
+            }, delay);
+        }
     }
 
     private void populateButtons() {
@@ -118,6 +120,7 @@ public class ActualGame extends AppCompatActivity {
         Random rn = new Random();
         int col = rn.nextInt() % 3;
         int row = rn.nextInt() % 3;
+        LockButtonSizes();
         //scale Image
         int newWidth = buttons[col][row].getWidth();
         int newHeight = buttons[col][row].getHeight();
