@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,7 @@ public class ActualGame extends AppCompatActivity {
     private static final int NUM_ROWS = 3;
     private static final int NUM_COLS = 3;
     private boolean finished = false;
+    private Handler h;
 
     Button buttons[][] = new Button [NUM_ROWS][NUM_COLS];
 
@@ -27,22 +29,33 @@ public class ActualGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actual_game);
         populateButtons();
-        Runnable runGame = new Runnable() {
+        /*Runnable runGame = new Runnable() {
             public void run() {
                 ravensAppear();
             }
         };
-        new Thread(runGame).start();
-        /*
-        Handler h = new Handler();
-        final Handler HANDLE =h;
-        int delay = 1000; //milliseconds
-        final int F_DELAY= delay;
+        new Thread(runGame).start();*/
+
+        h = new Handler();
+
+        Runnable runnable = new Runnable(){
+            @Override
+            public void run() {
+                ravensAppear();
+                if(!finished) {
+                    h.postDelayed(this, 1000);
+                }
+            }
+        };
+        h.postDelayed(runnable, 1000);
+        /*int delay = 1000; //milliseconds
        // while(!finished) {
             h.postDelayed(new Runnable() {
                 public void run() {
                     ravensAppear();
-                    HANDLE.postDelayed(this, F_DELAY);
+                    if (!finished) {
+                        h.postDelayed(this, 1000);
+                    }
                 }
             }, delay);
         }*/
