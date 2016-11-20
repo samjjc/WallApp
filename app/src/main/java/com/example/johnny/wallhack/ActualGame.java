@@ -4,9 +4,8 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -28,6 +27,13 @@ public class ActualGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actual_game);
         populateButtons();
+        Runnable runGame = new Runnable() {
+            public void run() {
+                ravensAppear();
+            }
+        };
+        new Thread(runGame).start();
+        /*
         Handler h = new Handler();
         final Handler HANDLE =h;
         int delay = 1000; //milliseconds
@@ -39,8 +45,8 @@ public class ActualGame extends AppCompatActivity {
                     HANDLE.postDelayed(this, F_DELAY);
                 }
             }, delay);
-        }
-   // }
+        }*/
+    }
 
     private void populateButtons() {
         TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);
@@ -117,17 +123,24 @@ public class ActualGame extends AppCompatActivity {
         }
     }
     private void ravensAppear() {
-        Random rn = new Random();
-        int col = rn.nextInt() % 3;
-        int row = rn.nextInt() % 3;
-        LockButtonSizes();
-        //scale Image
-        int newWidth = buttons[col][row].getWidth();
-        int newHeight = buttons[col][row].getHeight();
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.raven_head);
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth,newHeight,true);
-        Resources resource = getResources();
-        buttons[col][row].setBackground(new BitmapDrawable(resource, scaledBitmap));
+        while(!finished) {
+            Random rn = new Random();
+            int col = rn.nextInt() % 3;
+            int row = rn.nextInt() % 3;
+            LockButtonSizes();
+            //scale Image
+            int newWidth = buttons[col][row].getWidth();
+            int newHeight = buttons[col][row].getHeight();
+            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.raven_head);
+            Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
+            Resources resource = getResources();
+            buttons[col][row].setBackground(new BitmapDrawable(resource, scaledBitmap));
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e){
+                e.printStackTrace();
+            }
+        }
 
     }
 
