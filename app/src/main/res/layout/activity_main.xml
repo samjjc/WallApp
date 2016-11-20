@@ -44,7 +44,8 @@
         android:layout_marginTop="17dp"
         android:id="@+id/LEADERBOARDS"
         android:layout_below="@+id/PLAY"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="leader" />
 
     <Switch
         android:text="Audio "

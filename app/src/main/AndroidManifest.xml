@@ -17,7 +17,12 @@
         </activity>
         <activity android:name=".ActualGame" />
         <activity android:name=".GetName" />
+<<<<<<< HEAD
         <activity android:name=".Help_Page"></activity>
+=======
+        <activity android:name=".Leaderboard" />
+        <activity android:name=".End"></activity>
+>>>>>>> 7a69bfc5d6a9c95ee0d09eaeb4c8525eab28d42d
     </application>
 
 </manifest>
