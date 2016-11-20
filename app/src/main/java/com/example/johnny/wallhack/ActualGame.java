@@ -21,6 +21,7 @@ public class ActualGame extends AppCompatActivity {
     private static final int NUM_COLS = 3;
     private boolean finished = false;
     private Handler h;
+    private int time = 5;
 
     Button buttons[][] = new Button [NUM_ROWS][NUM_COLS];
 
@@ -42,7 +43,8 @@ public class ActualGame extends AppCompatActivity {
             @Override
             public void run() {
                 ravensAppear();
-                if(!finished) {
+                time-=1;
+                if(time>0) {
                     h.postDelayed(this, 1000);
                 }
             }
