@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:id="@+id/HELP"
+        android:onClick="HELPMessage"
         android:layout_below="@+id/LEADERBOARDS"
         android:layout_alignLeft="@+id/LEADERBOARDS"
         android:layout_alignStart="@+id/LEADERBOARDS"

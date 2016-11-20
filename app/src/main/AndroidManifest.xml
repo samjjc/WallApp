@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActualGame" />
-        <activity android:name=".GetName"></activity>
+        <activity android:name=".GetName" />
+        <activity android:name=".Help_Page"></activity>
     </application>
 
 </manifest>
