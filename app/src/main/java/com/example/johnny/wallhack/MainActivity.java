@@ -45,7 +45,10 @@ public class MainActivity extends AppCompatActivity {
                         TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.MATCH_PARENT,
                         1.0f
-                ));
+                ));int width = button.getWidth();
+                button.setMinWidth(width);
+                button.setMaxWidth(width);
+
                 button.setText(""+col+","+row);
                 //make Text not clip on small buttons
                 button.setPadding(0,0,0,0);
