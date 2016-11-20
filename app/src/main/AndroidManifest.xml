@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActualGame"></activity>
+        <activity android:name=".ActualGame" />
+        <activity android:name=".GetName"></activity>
     </application>
 
 </manifest>
