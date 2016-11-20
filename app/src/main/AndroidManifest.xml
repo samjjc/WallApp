@@ -16,7 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActualGame" />
-        <activity android:name=".GetName"></activity>
+        <activity android:name=".GetName" />
+        <activity android:name=".Leaderboard" />
+        <activity android:name=".End"></activity>
     </application>
 
 </manifest>
