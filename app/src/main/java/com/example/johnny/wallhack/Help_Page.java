@@ -17,7 +17,7 @@ public class Help_Page extends AppCompatActivity {
         startActivity(startNewActivity);
     }
     public void PLAYMessage(View view) {
-        Intent startNewActivity = new Intent(this, ActualGame.class);
+        Intent startNewActivity = new Intent(this, GetName.class);
         startActivity(startNewActivity);
     }
 }
