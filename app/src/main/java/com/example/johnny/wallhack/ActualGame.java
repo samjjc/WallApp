@@ -32,7 +32,7 @@ public class ActualGame extends AppCompatActivity {
         final Handler HANDLE =h;
         int delay = 1000; //milliseconds
         final int F_DELAY= delay;
-        while(!finished) {
+       // while(!finished) {
             h.postDelayed(new Runnable() {
                 public void run() {
                     ravensAppear();
@@ -40,7 +40,7 @@ public class ActualGame extends AppCompatActivity {
                 }
             }, delay);
         }
-    }
+   // }
 
     private void populateButtons() {
         TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);

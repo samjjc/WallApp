@@ -27,10 +27,7 @@
         android:id="@+id/usernameinput"
         android:hint="Enter Your Name"
         android:inputType="textPersonName"
-        android:layout_marginBottom="44dp"
         android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_alignBottom="@+id/OK"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/OK"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

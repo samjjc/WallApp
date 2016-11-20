@@ -20,12 +20,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(startNewActivity);
     }
 
-<<<<<<< HEAD
-=======
     public void leader(View view) {
         Intent intent = new Intent(this, Leaderboard.class);
         startActivity(intent);
     }
->>>>>>> 7a69bfc5d6a9c95ee0d09eaeb4c8525eab28d42d
+
 
 }
