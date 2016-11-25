@@ -150,11 +150,11 @@ public class ActualGame extends AppCompatActivity {
             Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
             Resources resource = getResources();
             buttons[col][row].setBackground(new BitmapDrawable(resource, scaledBitmap));
-            try {
+            /*try {
                 Thread.sleep(1000);
             } catch (InterruptedException e){
                 e.printStackTrace();
-            }
+            }*/
         }
 
     }
