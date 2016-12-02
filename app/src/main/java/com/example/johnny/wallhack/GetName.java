@@ -16,5 +16,6 @@ public class GetName extends AppCompatActivity {
     public void OKMessage(View view) {
         Intent startNewActivity = new Intent(this, ActualGame.class);
         startActivity(startNewActivity);
+        finish();
     }
 }

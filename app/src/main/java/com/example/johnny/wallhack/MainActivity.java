@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public void leader(View view) {
         Intent intent = new Intent(this, Leaderboard.class);
         startActivity(intent);
+        finish();
     }
 
 

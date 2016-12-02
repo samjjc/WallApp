@@ -13,8 +13,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
-import java.util.Random;
-
 public class ActualGame extends AppCompatActivity {
 
     private static final int NUM_ROWS = 3;
@@ -139,12 +137,15 @@ public class ActualGame extends AppCompatActivity {
     }
     private void ravensAppear() {
         while(!finished) {
-            Random rn = new Random();
+            /*Random rn = new Random();
             int col = rn.nextInt() % 3;
-            int row = rn.nextInt() % 3;
+            int row = rn.nextInt() % 3;*/
+            int col=2;
+            int row=1;
             LockButtonSizes();
             //scale Image
-            int newWidth = buttons[col][row].getWidth();
+            buttons[col][row].setBackgroundResource(R.mipmap.raven_head);
+            /*int newWidth = buttons[col][row].getWidth();
             int newHeight = buttons[col][row].getHeight();
             Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.raven_head);
             Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
