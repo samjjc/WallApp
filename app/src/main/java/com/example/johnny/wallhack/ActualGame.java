@@ -23,9 +23,9 @@ public class ActualGame extends AppCompatActivity {
 
     private static final int NUM_ROWS = 3;
     private static final int NUM_COLS = 3;
-    private boolean finished = false;
-    private Handler h;
-    private int time = 5;
+    //private boolean finished = false;
+    //private Handler h;
+    private static final int TIME = 5; // Lowering time prevents Score Toast to display
     private boolean[][] click = {{false, false, false},
                                  {false, false, false},
                                  {false, false, false}};
@@ -183,10 +183,11 @@ public class ActualGame extends AppCompatActivity {
     }
 
     private void stopwatch() {
-        CountDownTimer countdown = new CountDownTimer(time * 1000, 1000) {
+        CountDownTimer countdown = new CountDownTimer(TIME * 1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 check();
+                //scoreCounter(check());
             }
             public void onFinish() {
                 initClick();
@@ -210,9 +211,19 @@ public class ActualGame extends AppCompatActivity {
             for (int i = 0; i < 3; i++) {
                 if (click[getCol()[i]][getRow()[i]] == true) { // For some reason, checking immediate previous location of 'RAVEN'
                     score++;
+                    //return score;
                     Toast.makeText(this, "Score: " + score, Toast.LENGTH_SHORT).show();
                 }
             }
+        //return score;
         //}
     }
+
+    /*
+    private void scoreCounter(int score) {
+        TextView scoreView = (TextView) findViewById(R.id.score);
+        scoreView.setText("Score: " + Integer.toString(score));
+    }
+    */
+
 }

@@ -14,7 +14,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void PLAYMessage(View view) {
         Intent startNewActivity = new Intent(this, GetName.class);
-        startActivity(startNewActivity);}
+        startActivity(startNewActivity);
+    }
+
     public void HELPMessage(View view) {
         Intent startNewActivity = new Intent(this, Help_Page.class);
         startActivity(startNewActivity);
@@ -25,6 +27,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 
 }

@@ -62,7 +62,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ravenhead"
+        app:srcCompat="@mipmap/raven_head"
         android:id="@+id/imageView"
         android:layout_above="@+id/PLAY"
         android:layout_alignParentStart="true" />
