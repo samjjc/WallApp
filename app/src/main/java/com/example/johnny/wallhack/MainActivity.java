@@ -14,10 +14,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void PLAYMessage(View view) {
         Intent startNewActivity = new Intent(this, GetName.class);
-        startActivity(startNewActivity);}
+        startActivity(startNewActivity);
+        finish();}
     public void HELPMessage(View view) {
         Intent startNewActivity = new Intent(this, Help_Page.class);
         startActivity(startNewActivity);
+        finish();
     }
 
     public void leader(View view) {

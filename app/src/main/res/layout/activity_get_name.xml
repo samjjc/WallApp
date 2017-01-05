@@ -28,6 +28,6 @@
         android:hint="Enter Your Name"
         android:inputType="textPersonName"
         android:layout_marginRight="20dp"
-        android:layout_above="@+id/OK"
+        android:layout_above="@id/OK"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
