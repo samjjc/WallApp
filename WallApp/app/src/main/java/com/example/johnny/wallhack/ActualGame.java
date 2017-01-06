@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,6 +31,7 @@ public class ActualGame extends AppCompatActivity {
     private static boolean[][] check = {{false, false, false},
                                         {false, false, false},
                                         {false, false, false}};
+    //private static boolean clicked = false;
 
     //private static String s;
     /*private static String[][] sArr = {{"blank", "blank", "blank"},
@@ -41,7 +43,7 @@ public class ActualGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actual_game);
         //text = (TextView) findViewById(R.id.text1);
-        tickTock();
+        randLoop();
         populateButtons();
     }
 
@@ -56,9 +58,9 @@ public class ActualGame extends AppCompatActivity {
         //}
     }
 
-    private void checkAndDo() {
+    /*private void checkAndDo() {
         boolean[][] randArray = randGenerator();
-        /*for (int i = 0; i < 3; i++) {
+        *//*for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (randArray[i][j] == true) {
                     sArr[i][j] = "RAVEN";
@@ -68,16 +70,16 @@ public class ActualGame extends AppCompatActivity {
                 }
                 //text.setText(sArr[i][j]);
             }
-        }*/
+        }*//*
         //return sArr;
-    }
+    }*/
 
     private void populateButtons() {
         //Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.raven_head);
         //Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth,newHeight,true);
         //Resources resource = getResources();
         //button.setBackground(new BitmapDrawable(resource, scaledBitmap));
-        final ImageView view = new ImageView(this);
+        //final ImageView view = new ImageView(this);
         TableLayout table = (TableLayout) findViewById(R.id.table);
         //String s = checkAndDo();
         final boolean[][] randArray = randGenerator();
@@ -89,23 +91,25 @@ public class ActualGame extends AppCompatActivity {
                     1.0f
             ));
             table.addView(tableRow);
-            for (int row = 0; row < NUM_ROWS; row++){
-                final TextView text = new TextView(this);
-                text.setLayoutParams(new TableRow.LayoutParams(
+            for (int row = 0; row < NUM_ROWS; row++) {
+                final ImageView view = new ImageView(this);
+                //final TextView text = new TextView(this);
+                view.setLayoutParams(new TableRow.LayoutParams(
                         TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.MATCH_PARENT,
                         1.0f
                 ));
                 final int finalCol = col;
                 final int finalRow = row;
-                new CountDownTimer(30000, 1000) {
+                new CountDownTimer(30000, 2000) {
                     public void onTick(long millisUntilFinished) {
                         if (randArray[finalCol][finalRow] == true) {
-                            text.setText("RAVEN");
-                            //view.setImageResource(R.mipmap.raven_head);
+                            //text.setText("RAVEN");
+                            view.setImageResource(R.mipmap.raven_head);
                             //tableRow.addView(view);
                         } else {
-                            text.setText("blank");
+                            //text.setText("blank");
+                            view.setImageResource(R.mipmap.placeholder);
                         }
                     }
                     public void onFinish() {
@@ -113,20 +117,29 @@ public class ActualGame extends AppCompatActivity {
                     }
                 }.start();
 
+                /*view.setOnClickListener(
+                    new View.OnClickListener() {
+                        public void onClick(View view) {
+                            Log.d("click status", "clicked");
+                        }
+                    }
+                );*/
+
                 //make Text not clip on small buttons
-                text.setPadding(0, 0, 0, 0);
-                //view.setPadding(0, 0, 0, 0);
-                //tableRow.addView(view);
-                tableRow.addView(text);
+                //text.setPadding(0, 0, 0, 0);
+                view.setPadding(0, 0, 0, 0);
+                tableRow.addView(view);
+                //tableRow.addView(text);
                 //text.setText(checkAndDo()[col][row]);
             }
         }
     }
 
-    private void tickTock() {
+    private void randLoop() {
         new CountDownTimer(30000, 1000) {
             public void onTick(long millisUntilFinished) {
-                checkAndDo();
+                //checkAndDo();
+                randGenerator();
             }
 
             public void onFinish() {
